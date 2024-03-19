@@ -1,0 +1,20 @@
+{
+  "name": "saucedemo-com-tests",
+  "version": "1.0.0",
+  "description": "Automated tests for saucedemo.com",
+  "main": "index.js",
+  "scripts": {
+    "cypress:open": "cypress open"
+  },
+  "keywords": [
+    "cypress",
+    "saucedemo",
+    "automated",
+    "tests"
+  ],
+  "author": "Paweł Baraszkiewicz",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.7.0"
+  }
+}
