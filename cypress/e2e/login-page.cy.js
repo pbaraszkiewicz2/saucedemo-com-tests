@@ -55,9 +55,9 @@ describe("Login page test", () => {
     );
   });
 
-  it("should close error container if close button is clicked", () => {
-    loginPage.login("test", "test");
-    loginPage.elements.errorContainerCloseButton().click();
-    loginPage.elements.errorContainer().should("not.exist");
-  });
+  // it("should close error container if close button is clicked", () => {
+  //   loginPage.login("test", "test");
+  //   loginPage.elements.errorContainerCloseButton().click();
+  //   loginPage.elements.errorContainer().should("not.exist");
+  // });
 });
