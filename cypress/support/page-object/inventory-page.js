@@ -5,6 +5,7 @@ class inventoryPage {
     logo: () => cy.get("div.app_logo"),
     burgerMenu: () => cy.get("button#react-burger-menu-btn"),
     shoppingCart: () => cy.get("a.shopping_cart_link"),
+    shoppingCartBadge: () => cy.get('div[id="shopping_cart_container"] span'),
     pageTitle: () => cy.get("span.title"),
     productSortDropdown: () =>
       cy.get('select[data-test="product_sort_container"]'),
@@ -14,6 +15,8 @@ class inventoryPage {
     linkedInLink: () =>
       cy.get('a[href="https://www.linkedin.com/company/sauce-labs/"]'),
     footer: () => cy.get("div.footer_copy"),
+    sidebarMenu: () => cy.get("div.bm-menu"),
+    sidebarMenuCloseButton: () => cy.get("button#react-burger-cross-btn"),
   };
 
   inventoryPageElementsVerification() {
@@ -29,17 +32,58 @@ class inventoryPage {
     this.elements.footer().should("be.visible");
   }
 
+  inventoryItemElements = {
+    inventoryItem: () => cy.get("div.inventory_item"),
+    itemName: () => cy.get("div.inventory_item_name"),
+    itemImg: () => cy.get("img.inventory_item_img"),
+    itemDesc: () => cy.get("div.inventory_item_desc"),
+    itemPrice: () => cy.get("div.inventory_item_price"),
+    addToCartButton: () => cy.get("button"),
+  };
+
   inventoryItemVerification(inventoryNumber) {
-    cy.get("div.inventory_item")
+    this.inventoryItemElements
+      .inventoryItem()
       .eq(inventoryNumber)
       .should("be.visible")
       .within(() => {
-        cy.get("div.inventory_item_name").should("be.visible");
-        cy.get("img.inventory_item_img").should("be.visible");
-        cy.get("div.inventory_item_desc").should("be.visible");
-        cy.get("div.inventory_item_price").should("be.visible");
-        cy.get("button").should("be.visible");
+        this.inventoryItemElements.itemName().should("be.visible");
+        this.inventoryItemElements.itemImg().should("be.visible");
+        this.inventoryItemElements.itemDesc().should("be.visible");
+        this.inventoryItemElements.itemPrice().should("be.visible");
+        this.inventoryItemElements.addToCartButton().should("be.visible");
       });
+  }
+
+  addItemToCart(inventoryNumber) {
+    this.inventoryItemElements
+      .inventoryItem()
+      .eq(inventoryNumber)
+      .within(() => {
+        this.inventoryItemElements.addToCartButton().click();
+        this.inventoryItemElements
+          .addToCartButton()
+          .should("have.text", "Remove");
+      });
+  }
+
+  removeItemFromCart(inventoryNumber) {
+    this.inventoryItemElements
+      .inventoryItem()
+      .eq(inventoryNumber)
+      .within(() => {
+        this.inventoryItemElements.addToCartButton().click();
+        this.inventoryItemElements
+          .addToCartButton()
+          .should("have.text", "Add to cart");
+      });
+  }
+
+  numberOfItemsInCartVerification(numberOfItems) {
+    this.elements
+      .shoppingCartBadge()
+      .should("be.visible")
+      .should("have.text", numberOfItems);
   }
 }
 

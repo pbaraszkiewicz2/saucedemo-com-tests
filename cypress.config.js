@@ -5,6 +5,6 @@ module.exports = defineConfig({
     baseUrl: "https://www.saucedemo.com",
     viewportHeight: 1080,
     viewportWidth: 1920,
-    // pageLoadTimeout: 120000,
+    chromeWebSecurity: false,
   },
 });
