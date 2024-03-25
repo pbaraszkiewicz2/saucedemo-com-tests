@@ -18,7 +18,7 @@ describe("Inventory page test", () => {
     cy.url().should("include", "/inventory.html");
   });
 
-  it("has visible all page elements", () => {
+  it("has all required page elements", () => {
     inventoryPage.inventoryPageElementsVerification();
   });
 
@@ -27,10 +27,42 @@ describe("Inventory page test", () => {
     inventoryPage.elements.sidebarMenu().should("be.visible");
   });
 
+  it("sidebar - all items button test", () => {
+    inventoryPage.elements.burgerMenu().click();
+    inventoryPage.sidebarElements.allItems().invoke("attr", "href");
+    inventoryPage.sidebarElements.allItems().click();
+    cy.url().should("include", "/inventory.html");
+  });
+
+  it("sidebar - about button test", () => {
+    inventoryPage.elements.burgerMenu().click();
+    inventoryPage.sidebarElements
+      .about()
+      .should("have.attr", "href", "https://saucelabs.com/");
+  });
+
+  it("sidebar - logout test", () => {
+    inventoryPage.elements.burgerMenu().click();
+    inventoryPage.sidebarElements.logout().click();
+    cy.url().should("include", "https://www.saucedemo.com/");
+  });
+
+  it("sidebar - reset app state test", () => {
+    inventoryPage.addItemToCart(0);
+    inventoryPage.numberOfItemsInCartVerification(1);
+    inventoryPage.elements.burgerMenu().click();
+    inventoryPage.sidebarElements.resetAppState().click();
+    inventoryPage.elements.shoppingCartBadge().should("not.exist");
+  });
+
   it("should hide sidebar menu when x button is pressed", () => {
     inventoryPage.elements.burgerMenu().click();
     inventoryPage.elements.sidebarMenuCloseButton().click();
     inventoryPage.elements.sidebarMenu().should("not.be.visible");
+  });
+
+  it("footer should include links", () => {
+    inventoryPage.elements.footerCopy().should("have.attr", "href");
   });
 
   it("has 6 inventory items - each has all required elements", () => {

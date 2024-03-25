@@ -14,7 +14,8 @@ class inventoryPage {
     facebookLink: () => cy.get('a[href="https://www.facebook.com/saucelabs"]'),
     linkedInLink: () =>
       cy.get('a[href="https://www.linkedin.com/company/sauce-labs/"]'),
-    footer: () => cy.get("div.footer_copy"),
+    footer: () => cy.get("footer.footer"),
+    footerCopy: () => cy.get("div.footer_copy"),
     sidebarMenu: () => cy.get("div.bm-menu"),
     sidebarMenuCloseButton: () => cy.get("button#react-burger-cross-btn"),
   };
@@ -30,6 +31,7 @@ class inventoryPage {
     this.elements.facebookLink().should("be.visible");
     this.elements.linkedInLink().should("be.visible");
     this.elements.footer().should("be.visible");
+    this.elements.footerCopy().should("be.visible");
   }
 
   inventoryItemElements = {
@@ -54,6 +56,13 @@ class inventoryPage {
         this.inventoryItemElements.addToCartButton().should("be.visible");
       });
   }
+
+  sidebarElements = {
+    allItems: () => cy.get("a#inventory_sidebar_link"),
+    about: () => cy.get("a#about_sidebar_link"),
+    logout: () => cy.get("a#logout_sidebar_link"),
+    resetAppState: () => cy.get("a#reset_sidebar_link"),
+  };
 
   addItemToCart(inventoryNumber) {
     this.inventoryItemElements

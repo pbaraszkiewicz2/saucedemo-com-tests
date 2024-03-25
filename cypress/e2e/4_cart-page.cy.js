@@ -1,4 +1,5 @@
 /// <reference types="Cypress" />
+
 import loginPage from "../support/page-object/login-page";
 import inventoryPage from "../support/page-object/inventory-page";
 import users from "../fixtures/user_types.json";
@@ -40,5 +41,12 @@ describe("Cart page test", () => {
     inventoryPage.elements.shoppingCart().click();
     cartPage.elements.itemName().click();
     cy.url().should("include", "/inventory-item.html?id=");
+  });
+
+  it("should be possible to change quantity of an item", () => {
+    inventoryPage.addItemToCart(0);
+    inventoryPage.elements.shoppingCart().click();
+    cartPage.elements.quantity().clear();
+    cartPage.elements.quantity().type(2);
   });
 });

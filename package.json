@@ -2,10 +2,10 @@
   "name": "saucedemo-com-tests",
   "version": "1.0.0",
   "description": "Automated tests for saucedemo.com",
-  "main": "index.js",
   "scripts": {
     "cypress:open": "cypress open",
-    "cypress": "cypress run"
+    "cypress:headless:chrome": "cypress run --browser chrome",
+    "cypress:headless:electron": "cypress run --browser electron"
   },
   "keywords": [
     "cypress",
@@ -16,6 +16,7 @@
   "author": "Paweł Baraszkiewicz",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^13.7.0"
+    "cypress": "^13.7.0",
+    "mochawesome": "^7.1.3"
   }
 }

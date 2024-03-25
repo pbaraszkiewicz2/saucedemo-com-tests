@@ -11,7 +11,26 @@ class checkoutPage {
     continueButton: () => cy.get('input[data-test="continue"]'),
     errorContainer: () => cy.get("div.error-message-container"),
     cancelButton: () => cy.get('button[data-test="cancel"]'),
+    finishButton: () => cy.get('button[data-test="finish"]'),
+    backToProductsButton: () => cy.get('button[data-test="back-to-products"]'),
   };
+
+  checkoutPageElementsVerification() {
+    this.firstNameInput().should("be.visible");
+    this.lastNameInput().should("be.visible");
+    this.postalCodeInput().should("be.visible");
+  }
+
+  checkoutPageSummaryVerification() {
+    cy.contains("div", "Payment Information");
+    cy.contains("div", "Shipping Information");
+    cy.contains("div", "Price Total");
+    cy.contains("div", "Total");
+    cy.contains("div", "Name");
+    cy.contains("div", "Last Name");
+    cy.contains("div", "Zip/Postal code");
+  }
+
   enterFirstName(firstName) {
     this.elements.firstNameInput().clear();
     this.elements.firstNameInput().type(firstName);

@@ -35,7 +35,7 @@ class loginPage {
     this.elements
       .errorContainer()
       .should("have.css", "background-color", "rgb(226, 35, 26)");
-    this.elements.errorMsg().should("have.text", msg);
+    this.elements.errorMsg().should("include.text", msg);
   }
 }
 

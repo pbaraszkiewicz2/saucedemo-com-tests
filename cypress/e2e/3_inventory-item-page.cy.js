@@ -1,3 +1,5 @@
+/// <reference types="Cypress" />
+
 import loginPage from "../support/page-object/login-page";
 import inventoryPage from "../support/page-object/inventory-page";
 import users from "../fixtures/user_types.json";
