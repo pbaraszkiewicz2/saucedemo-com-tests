@@ -19,7 +19,7 @@ node -v
 
 3\. You should have node v.20 set
 
-4\. install dependencies with npm
+4\. Install dependencies with npm
 
 ```
 npm i
