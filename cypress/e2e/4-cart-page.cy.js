@@ -19,7 +19,7 @@ describe("Cart page test", () => {
     cy.url().should("include", "/cart.html");
   });
 
-  it("items added from inventory page are visible on cart page", () => {
+  it("items added from inventory page are visible on the cart page", () => {
     inventoryPage.addItemToCart(2);
     inventoryPage.addItemToCart(5);
     inventoryPage.elements.shoppingCart().click();

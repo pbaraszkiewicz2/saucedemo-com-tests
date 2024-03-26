@@ -89,18 +89,18 @@ describe("Inventory page test", () => {
       .select(dropdownOptions.price_high_lo_low);
   });
 
-  it("add one item to cart", () => {
+  it("add one item to the cart", () => {
     inventoryPage.addItemToCart(0);
     inventoryPage.numberOfItemsInCartVerification(1);
   });
 
-  it("remove one item from cart", () => {
+  it("remove one item from the cart", () => {
     inventoryPage.addItemToCart(0);
     inventoryPage.removeItemFromCart(0);
     inventoryPage.elements.shoppingCartBadge().should("not.exist");
   });
 
-  it("add 6 items to cart ", () => {
+  it("add 6 items to the cart ", () => {
     for (
       let inventoryItemNumber = 0;
       inventoryItemNumber < 6;

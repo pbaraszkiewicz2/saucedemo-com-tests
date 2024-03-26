@@ -22,7 +22,7 @@ describe("Checkout page test", () => {
     cy.url().should("include", "/cart.html");
   });
 
-  it("should open checkout page when checkout button is pressed on cart page", () => {
+  it("should open checkout page when checkout button is pressed on the cart page", () => {
     // Condition mentioned in previous test case is not fulfilled here - changed to proceed with other test cases
     inventoryPage.elements.shoppingCart().click();
     cartPage.elements.checkoutButton().click();

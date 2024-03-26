@@ -2,3 +2,4 @@
 /node_modules
 /mochawesome-report
 /cypress/screenshots
+/cypress/downloads
