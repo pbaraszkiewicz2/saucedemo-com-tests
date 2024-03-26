@@ -49,8 +49,6 @@ npm run cypress:headless:chrome
 npm run cypress:headless:electron
 ```
 
-In headless mode tests are executed in the Chrome browser.
-
 **Test reports**
 
 If you run tests in headless mode, reports are generated for each test suite as html file at the end of the test. Reports are available in the folder:
