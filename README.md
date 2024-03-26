@@ -9,7 +9,7 @@ Repository contains test suites prepared in Cypress for online shop: saucedemo.c
 
 **Installation**
 
-1\. Clone repository to local machine
+1\. Clone repository to the local machine
 
 2\. Verify node version:
 
