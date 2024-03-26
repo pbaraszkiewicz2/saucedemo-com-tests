@@ -36,11 +36,20 @@ describe("Cart page test", () => {
     cartPage.elements.cartItem().should("have.length", 3);
   });
 
-  it("can access inventory item page from the cart", () => {
+  it("should be possible to access inventory item page from the cart", () => {
     inventoryPage.addItemToCart(2);
     inventoryPage.elements.shoppingCart().click();
     cartPage.elements.itemName().click();
     cy.url().should("include", "/inventory-item.html?id=");
+  });
+
+  it("should be possible to remove items from the cart", () => {
+    inventoryPage.addItemToCart(2);
+    inventoryPage.elements.shoppingCart().click();
+    cartPage.elements.cartItem().within(() => {
+      cartPage.elements.removeFromCartButton().click();
+    });
+    cartPage.elements.cartItem().should("have.length", 0);
   });
 
   it("should be possible to change quantity of an item", () => {
